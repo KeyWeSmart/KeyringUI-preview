@@ -1,4 +1,5 @@
 import { alpha, createTheme } from '@mui/material/styles';
+import { MuiButton } from './components/MuiButton';
 
 /*
  * Base theme
@@ -80,58 +81,8 @@ export const BaseTheme = createTheme({
   shape: {
     borderRadius: 12,
   },
-  spacing: [8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120],
   components: {
-    MuiButton: {
-      styleOverrides: {
-        root: ({ ownerState, theme }) => ({
-          padding: '20px 32px',
-          height: 50,
-          boxShadow: 'none',
-          //ownerState primary/contained
-          ...(ownerState.variant === 'contained' &&
-            ownerState.color === 'primary' && {
-              '&:hover': {
-                backgroundColor: theme.palette.secondary.main,
-                boxShadow: 'none',
-              },
-              '&:focus': {
-                backgroundColor: theme.palette.secondary.main,
-                boxShadow: `0px 0px 0px 2px ${theme.palette.inactive.main}`,
-              },
-              '&:active': {
-                backgroundColor: theme.palette.primary.dark,
-                boxShadow: 'none',
-              },
-            }),
-          ...(ownerState.variant === 'outlined' &&
-            ownerState.color === 'primary' && {
-              border: 'none',
-              boxShadow: `0px 0px 0px 1px ${theme.palette.primary.main}`,
-              color: theme.palette.primary.main,
-              '&:hover': {
-                backgroundColor: `${theme.palette.secondary.main}50`,
-                boxShadow: 'none',
-                border: 'none',
-              },
-              '&:focus': {
-                backgroundColor: `${theme.palette.secondary.main}50`,
-                boxShadow: `0px 0px 0px 2px ${theme.palette.primary.main}`,
-              },
-              '&:active': {
-                backgroundColor: `${theme.palette.secondary.main}`,
-                color: theme.palette.primary.contrastText,
-                boxShadow: 'none',
-                border: 'none',
-              },
-            }),
-          //disabled
-          '&.Mui-disabled': {
-            backgroundColor: theme.palette.disabled.main,
-          },
-        }),
-      },
-    },
+    MuiButton,
     MuiTextField: {
       styleOverrides: {
         root: ({ ownerState, theme }) => ({
