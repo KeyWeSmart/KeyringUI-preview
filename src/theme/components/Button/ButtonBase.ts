@@ -1,4 +1,4 @@
-import { ButtonProps, Components } from '@mui/material';
+import { ButtonProps, Components, useTheme } from '@mui/material';
 import type { ThemeOptions, Theme } from '@mui/material/styles';
 import { ButtonSizer } from './ButtonSizer';
 import { containedOverRide } from './ButtonContained';
@@ -10,7 +10,7 @@ declare module '@mui/material/Button' {
     xxl: true;
   }
   // interface ButtonPropsVariantOverrides {
-  //   dashed: true;
+  //   circleExpand: true;
   // }
 }
 

@@ -1,6 +1,6 @@
 import { alpha, createTheme } from '@mui/material/styles';
 import { BaseButton } from './components/Button/ButtonBase';
-import { MuiCheckbox } from './components/MuiCheckbox';
+import { CheckboxBase } from './components/CheckboxBase';
 
 /*
  * Base theme
@@ -108,7 +108,7 @@ export const BaseTheme = createTheme({
         }),
       },
     },
-    MuiCheckbox,
+    MuiCheckbox: CheckboxBase,
   },
 });
 

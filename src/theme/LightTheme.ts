@@ -2,6 +2,10 @@ import { createTheme, ThemeOptions } from '@mui/material/styles';
 import BaseTheme from './BaseTheme';
 
 declare module '@mui/material/styles' {
+  interface TypeBackground {
+    lightpaper: string;
+  }
+
   interface Palette {
     disabled: Palette['primary'];
     inactive: Palette['primary'];
@@ -20,7 +24,7 @@ const lightTheme: ThemeOptions = {
       main: '#FF7110',
       light: '#FF9441',
       dark: '#CE5900',
-      contrastText: '#fff',
+      contrastText: '#FFFFFF',
     },
     success: {
       main: '#38BF7D',
@@ -41,8 +45,9 @@ const lightTheme: ThemeOptions = {
       main: '#A0A0A0',
     },
     background: {
-      default: '#fff',
-      paper: '#fff',
+      default: '#F5F5F5',
+      paper: '#FFFFFF',
+      lightpaper: '#D5D5D5',
     },
     text: {
       primary: '#161616',

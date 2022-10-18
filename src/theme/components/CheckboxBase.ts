@@ -29,20 +29,21 @@ const colorOverRide = ({
   }
 };
 
-export const MuiCheckbox: Components<Omit<Theme, 'components'>>['MuiCheckbox'] =
-  {
-    styleOverrides: {
-      root: ({
-        ownerState,
-        theme,
-      }: {
-        ownerState: CheckboxProps;
-        theme: Theme;
-      }) => ({
-        ...colorOverRide({ ownerState, theme }),
-        '&.Mui-disabled': {
-          color: theme.palette.disabled.main,
-        },
-      }),
-    },
-  };
+export const CheckboxBase: Components<
+  Omit<Theme, 'components'>
+>['MuiCheckbox'] = {
+  styleOverrides: {
+    root: ({
+      ownerState,
+      theme,
+    }: {
+      ownerState: CheckboxProps;
+      theme: Theme;
+    }) => ({
+      ...colorOverRide({ ownerState, theme }),
+      '&.Mui-disabled': {
+        color: theme.palette.disabled.main,
+      },
+    }),
+  },
+};
