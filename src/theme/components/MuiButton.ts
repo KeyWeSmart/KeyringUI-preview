@@ -1,6 +1,12 @@
-import { ButtonProps, Components } from '@mui/material';
+import { ButtonClasses, ButtonProps, Components, CSSInterpolation } from '@mui/material';
 import type { ThemeOptions, Theme } from '@mui/material/styles';
-const containedOverRide = ({ ownerState, theme }: { ownerState: ButtonProps, theme: Theme}) => {
+import { OverridesStyleRules } from '@mui/material/styles/overrides';
+import { createTheme } from '@mui/material/styles';
+
+// type BTNOverrideFn = ({ ownerState, theme}: {ownerState: ButtonProps, theme: Theme}) => ButtonProps['sx'];
+type root = Partial<OverridesStyleRules<keyof ButtonClasses, "MuiButton", Omit<Theme, "components">>>['root']
+
+const containedOverRide: root = ({ ownerState, theme }) => {
   const {color = "inherit"} = ownerState;
   return {
     '&:hover': {
@@ -22,7 +28,8 @@ export const MuiButton: Components<Omit<Theme, "components">>['MuiButton'] = {
       root: ({ ownerState, theme }: { ownerState: ButtonProps, theme: Theme}) => ({
         boxShadow: 'none',
         //ownerState primary/contained
-        ...(ownerState.variant === 'contained' && containedOverRide({ ownerState, theme })),
+        // @ts-ignore hot fix for now explore later?
+        ...(ownerState.variant === 'contained' ? containedOverRide({ownerState, theme}) : {}),
         ...(ownerState.variant === 'outlined' &&
           ownerState.color === 'primary' && {
             border: 'none',
