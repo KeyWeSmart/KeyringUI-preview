@@ -1,4 +1,4 @@
-import { TextField, TextFieldProps, MenuItem, Select, Switch, FormControlLabel } from "@mui/material";
+import { TextField, TextFieldProps, MenuItem, Select, Switch, FormControlLabel, InputLabel, FormControl } from "@mui/material";
 import { useState } from "react";
 import { RowContainer } from "./RowContainer";
 import { Stack, useTheme } from '@mui/system';
@@ -25,7 +25,11 @@ export const TextFields = () => {
                 pr={6}
                 width={240}
                 spacing={2}>
-                <Select
+                <TextField
+                    select={true}
+                    label="Variant"
+                    // notched={false}
+                    variant="filled"
                     onChange={(e) => e.target.value && setRowVariant(e.target.value as TextFieldProps['variant'])}
                     value={rowVariant}
                 >
@@ -34,9 +38,12 @@ export const TextFields = () => {
                             {variant}
                         </MenuItem>
                     ))}
-                </Select>
-                <Select
+                </TextField>
+                <TextField
+                    select={true}
                     value={rowColor}
+                    variant="filled"
+                    label="Color"
                     onChange={(e) => e.target.value && setRowColor(e.target.value as TextFieldProps['color'])}
                 >
                     {TextFieldColors.map(color => (
@@ -44,7 +51,7 @@ export const TextFields = () => {
                             {color}
                         </MenuItem>
                     ))}
-                </Select>
+                </TextField>
             </Stack>
             {
                 TextFieldSizes.map(size => (
