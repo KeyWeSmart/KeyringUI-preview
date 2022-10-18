@@ -1,27 +1,24 @@
 import { ButtonProps, Components } from '@mui/material';
 import type { ThemeOptions, Theme } from '@mui/material/styles';
-const containedOverRide = ({ ownerState, theme }: { ownerState: ButtonProps, theme: Theme}) => {
-  const {color = "inherit"} = ownerState;
-  return {
-    '&:hover': {
-      // backgroundColor: color === "inherit" ? 'inherit' : theme.palette[color].main,
-      boxShadow: 'none',
-    },
-    '&:focus': {
-      // backgroundColor: theme.palette.secondary.main,
-      boxShadow: `0px 0px 0px 2px ${theme.palette.inactive.main}`,
-    },
-    '&:active': {
-      // backgroundColor: theme.palette.primary.dark,
-      boxShadow: 'none',
-    },
+import { ButtonSizer } from './ButtonSizer';
+import { containedOverRide } from './ButtonContained';
+
+declare module '@mui/material/Button' {
+  interface ButtonPropsSizeOverrides {
+    xl: true;
+    xxl: true;
   }
+  // interface ButtonPropsVariantOverrides {
+  //   dashed: true;
+  // }
 }
-export const MuiButton: Components<Omit<Theme, "components">>['MuiButton'] = {
+
+export const BaseButton: Components<Omit<Theme, "components">>['MuiButton'] = {
     styleOverrides: {
       root: ({ ownerState, theme }: { ownerState: ButtonProps, theme: Theme}) => ({
         boxShadow: 'none',
         //ownerState primary/contained
+        ...ButtonSizer(ownerState.size) || {},
         ...(ownerState.variant === 'contained' && containedOverRide({ ownerState, theme })),
         ...(ownerState.variant === 'outlined' &&
           ownerState.color === 'primary' && {

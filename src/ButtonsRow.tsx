@@ -7,7 +7,7 @@ import { useAtom } from 'jotai';
 
 const ButtonVariants: ButtonProps['variant'][] = ['text', 'outlined', 'contained'];
 const ButtonColors: ButtonProps['color'][] = ['success', 'warning', 'inherit', 'primary', 'secondary', 'error'];
-const ButtonSizes: ButtonProps['size'][] = ['small', 'medium', 'large'];
+const ButtonSizes: ButtonProps['size'][] = ['small', 'medium', 'large', 'xl', 'xxl'];
 
 const BTNVariantsAtom = atomWithStorage<ButtonProps['variant']>('BTNVariantsAtom', 'text');
 const BTNColorsAtom = atomWithStorage<ButtonProps['color']>('BTNColorsAtom', 'primary');

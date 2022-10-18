@@ -1,5 +1,5 @@
 import { alpha, createTheme } from '@mui/material/styles';
-import { MuiButton } from './components/MuiButton';
+import { BaseButton } from './components/Button/ButtonBase';
 
 /*
  * Base theme
@@ -82,7 +82,7 @@ export const BaseTheme = createTheme({
     borderRadius: 12,
   },
   components: {
-    MuiButton,
+    MuiButton: BaseButton,
     MuiTextField: {
       styleOverrides: {
         root: ({ ownerState, theme }) => ({
