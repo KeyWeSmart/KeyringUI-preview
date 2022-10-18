@@ -1,5 +1,6 @@
 import { alpha, createTheme } from '@mui/material/styles';
 import { MuiButton } from './components/MuiButton';
+import { MuiCheckbox } from './components/MuiCheckbox';
 
 /*
  * Base theme
@@ -104,23 +105,7 @@ export const BaseTheme = createTheme({
         }),
       },
     },
-    // MuiCheckbox: {
-    //   styleOverrides: {
-    //     root: ({ ownerState, theme }) => ({
-    //       color:
-    //         ownerState.color === 'error'
-    //           ? theme.palette.error.main
-    //           : theme.palette.inactive.main,
-    //       '&:hover': {
-    //         color: theme.palette.primary.main,
-    //       },
-    //       '&.Mui-checked': {},
-    //       '&.Mui-disabled': {
-    //         color: theme.palette.disabled.main,
-    //       },
-    //     }),
-    //   },
-    // },
+    MuiCheckbox,
   },
 });
 
