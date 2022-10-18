@@ -2,6 +2,7 @@ import { ButtonProps, Components } from '@mui/material';
 import type { ThemeOptions, Theme } from '@mui/material/styles';
 import { ButtonSizer } from './ButtonSizer';
 import { containedOverRide } from './ButtonContained';
+import { outlinedOverRide } from './ButtonOutlined';
 
 declare module '@mui/material/Button' {
   interface ButtonPropsSizeOverrides {
@@ -13,38 +14,27 @@ declare module '@mui/material/Button' {
   // }
 }
 
-export const BaseButton: Components<Omit<Theme, "components">>['MuiButton'] = {
-    styleOverrides: {
-      root: ({ ownerState, theme }: { ownerState: ButtonProps, theme: Theme}) => ({
+export const BaseButton: Components<Omit<Theme, 'components'>>['MuiButton'] = {
+  styleOverrides: {
+    root: ({
+      ownerState,
+      theme,
+    }: {
+      ownerState: ButtonProps;
+      theme: Theme;
+    }) => ({
+      boxShadow: 'none',
+      ...(ButtonSizer(ownerState.size) || {}),
+      ...(ownerState.variant === 'contained' &&
+        containedOverRide({ ownerState, theme })),
+      ...(ownerState.variant === 'outlined' &&
+        outlinedOverRide({ ownerState, theme })),
+      //disabled
+      '&.Mui-disabled': {
+        color: theme.palette.text.disabled,
+        backgroundColor: theme.palette.disabled.main,
         boxShadow: 'none',
-        //ownerState primary/contained
-        ...ButtonSizer(ownerState.size) || {},
-        ...(ownerState.variant === 'contained' && containedOverRide({ ownerState, theme })),
-        ...(ownerState.variant === 'outlined' &&
-          ownerState.color === 'primary' && {
-            border: 'none',
-            boxShadow: `0px 0px 0px 1px ${theme.palette.primary.main}`,
-            color: theme.palette.primary.main,
-            '&:hover': {
-              backgroundColor: `${theme.palette.secondary.main}50`,
-              boxShadow: 'none',
-              border: 'none',
-            },
-            '&:focus': {
-              backgroundColor: `${theme.palette.secondary.main}50`,
-              boxShadow: `0px 0px 0px 2px ${theme.palette.primary.main}`,
-            },
-            '&:active': {
-              backgroundColor: `${theme.palette.secondary.main}`,
-              color: theme.palette.primary.contrastText,
-              boxShadow: 'none',
-              border: 'none',
-            },
-          }),
-        //disabled
-        '&.Mui-disabled': {
-          backgroundColor: theme.palette.disabled.main,
-        },
-      })
-    }
-  }
+      },
+    }),
+  },
+};

@@ -1,5 +1,6 @@
 import { alpha, createTheme } from '@mui/material/styles';
 import { BaseButton } from './components/Button/ButtonBase';
+import { MuiCheckbox } from './components/MuiCheckbox';
 
 /*
  * Base theme
@@ -19,7 +20,6 @@ declare module '@mui/material/Chip' {
 declare module '@mui/material/TextField' {
   interface TextFieldPropsVariantOverrides {
     // setup new variant
-    search: true;
   }
 }
 
@@ -89,6 +89,9 @@ export const BaseTheme = createTheme({
           '& .MuiInputBase-root': {
             overflow: 'hidden',
           },
+          '& .MuiInputBase-input': {
+            fontSize: 16,
+          },
           '& .MuiOutlinedInput-root': {
             backgroundColor: theme.palette.disabled.main,
             '&:hover': {
@@ -105,23 +108,7 @@ export const BaseTheme = createTheme({
         }),
       },
     },
-    // MuiCheckbox: {
-    //   styleOverrides: {
-    //     root: ({ ownerState, theme }) => ({
-    //       color:
-    //         ownerState.color === 'error'
-    //           ? theme.palette.error.main
-    //           : theme.palette.inactive.main,
-    //       '&:hover': {
-    //         color: theme.palette.primary.main,
-    //       },
-    //       '&.Mui-checked': {},
-    //       '&.Mui-disabled': {
-    //         color: theme.palette.disabled.main,
-    //       },
-    //     }),
-    //   },
-    // },
+    MuiCheckbox,
   },
 });
 

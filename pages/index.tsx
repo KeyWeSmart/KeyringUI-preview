@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import { Stack } from '@mui/system';
 import { ReactNode } from 'react';
 import { ButtonRow } from '../src/ButtonsRow';
+import { CheckboxRow } from '../src/CheckboxRow';
 import { TextFields } from '../src/TextFieldRows';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         </Typography>
         <ButtonRow />
         <TextFields />
+        <CheckboxRow />
       </Stack>
     </Container>
   );
