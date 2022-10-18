@@ -1,4 +1,4 @@
-import { ButtonProps } from '@mui/material';
+import { ButtonProps, Components } from '@mui/material';
 import type { ThemeOptions, Theme } from '@mui/material/styles';
 const containedOverRide = ({ ownerState, theme }: { ownerState: ButtonProps, theme: Theme}) => {
   const {color = "inherit"} = ownerState;
@@ -17,10 +17,9 @@ const containedOverRide = ({ ownerState, theme }: { ownerState: ButtonProps, the
     },
   }
 }
-export const MuiButton: ThemeOptions['components'] = {
-  MuiButton: {
+export const MuiButton: Components<Omit<Theme, "components">>['MuiButton'] = {
     styleOverrides: {
-      root: ({ ownerState, theme }) => ({
+      root: ({ ownerState, theme }: { ownerState: ButtonProps, theme: Theme}) => ({
         boxShadow: 'none',
         //ownerState primary/contained
         ...(ownerState.variant === 'contained' && containedOverRide({ ownerState, theme })),
@@ -49,7 +48,6 @@ export const MuiButton: ThemeOptions['components'] = {
         '&.Mui-disabled': {
           backgroundColor: theme.palette.disabled.main,
         },
-      }),
-    },
-  },
-}
+      })
+    }
+  }
