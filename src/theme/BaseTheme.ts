@@ -86,7 +86,6 @@ export const BaseTheme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: ({ ownerState, theme }) => ({
-          // borderRadius: theme.shape.borderRadius,
           '& .MuiInputBase-root': {
             overflow: 'hidden',
           },
