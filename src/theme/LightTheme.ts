@@ -18,11 +18,9 @@ const lightTheme: ThemeOptions = {
     mode: 'light',
     primary: {
       main: '#FF7110',
+      light: '#FF9441',
       dark: '#CE5900',
       contrastText: '#fff',
-    },
-    secondary: {
-      main: '#FF9441',
     },
     success: {
       main: '#38BF7D',

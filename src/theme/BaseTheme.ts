@@ -19,7 +19,6 @@ declare module '@mui/material/Chip' {
 declare module '@mui/material/TextField' {
   interface TextFieldPropsVariantOverrides {
     // setup new variant
-    search: true;
   }
 }
 
@@ -86,6 +85,9 @@ export const BaseTheme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: ({ ownerState, theme }) => ({
+          '& .MuiInputBase-input': {
+            fontSize: 16,
+          },
           '& .MuiOutlinedInput-root': {
             backgroundColor: theme.palette.disabled.main,
             '&:hover': {

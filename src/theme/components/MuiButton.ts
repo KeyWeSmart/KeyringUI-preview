@@ -1,53 +1,93 @@
 import { ButtonProps, Components } from '@mui/material';
 import type { ThemeOptions, Theme } from '@mui/material/styles';
-const containedOverRide = ({ ownerState, theme }: { ownerState: ButtonProps, theme: Theme}) => {
-  const {color = "inherit"} = ownerState;
+const containedOverRide = ({
+  ownerState,
+  theme,
+}: {
+  ownerState: ButtonProps;
+  theme: Theme;
+}) => {
+  const { color = 'inherit' } = ownerState;
   return {
     '&:hover': {
-      // backgroundColor: color === "inherit" ? 'inherit' : theme.palette[color].main,
+      backgroundColor:
+        color === 'inherit' ? 'inherit' : theme.palette[color].main,
       boxShadow: 'none',
     },
     '&:focus': {
-      // backgroundColor: theme.palette.secondary.main,
+      backgroundColor:
+        color === 'inherit' ? 'inherit' : theme.palette[color].light,
       boxShadow: `0px 0px 0px 2px ${theme.palette.inactive.main}`,
     },
     '&:active': {
-      // backgroundColor: theme.palette.primary.dark,
+      backgroundColor:
+        color === 'inherit' ? 'inherit' : theme.palette[color].dark,
       boxShadow: 'none',
     },
-  }
-}
-export const MuiButton: Components<Omit<Theme, "components">>['MuiButton'] = {
-    styleOverrides: {
-      root: ({ ownerState, theme }: { ownerState: ButtonProps, theme: Theme}) => ({
+  };
+};
+
+const outlinedOverRide = ({
+  ownerState,
+  theme,
+}: {
+  ownerState: ButtonProps;
+  theme: Theme;
+}) => {
+  const { color = 'inherit' } = ownerState;
+  return {
+    border: 'none',
+    color: color === 'inherit' ? 'inherit' : theme.palette[color].main,
+    boxShadow: `0px 0px 0px 1px ${
+      color === 'inherit' ? 'inherit' : theme.palette[color].main
+    }`,
+    '&:hover': {
+      backgroundColor:
+        color === 'inherit' ? 'inherit' : `${theme.palette[color].light}50`,
+      boxShadow: 'none',
+      border: 'none',
+    },
+    '&:focus': {
+      backgroundColor:
+        color === 'inherit' ? 'inherit' : `${theme.palette[color].light}50`,
+      boxShadow: `0px 0px 0px 1px ${
+        color === 'inherit' ? 'inherit' : theme.palette[color].main
+      }`,
+    },
+    '&:active': {
+      backgroundColor:
+        color === 'inherit' ? 'inherit' : `${theme.palette[color].light}`,
+      color:
+        color === 'inherit'
+          ? 'inherit'
+          : `${theme.palette[color].contrastText}`,
+      boxShadow: 'none',
+      border: 'none',
+    },
+  };
+};
+
+export const MuiButton: Components<Omit<Theme, 'components'>>['MuiButton'] = {
+  styleOverrides: {
+    root: ({
+      ownerState,
+      theme,
+    }: {
+      ownerState: ButtonProps;
+      theme: Theme;
+    }) => ({
+      boxShadow: 'none',
+      '&.MuiButton-contained': {
+        ...containedOverRide({ ownerState, theme }),
+      },
+      '&.MuiButton-outlined': {
+        ...outlinedOverRide({ ownerState, theme }),
+      },
+      '&.Mui-disabled': {
+        backgroundColor: theme.palette.disabled.main,
         boxShadow: 'none',
-        //ownerState primary/contained
-        ...(ownerState.variant === 'contained' && containedOverRide({ ownerState, theme })),
-        ...(ownerState.variant === 'outlined' &&
-          ownerState.color === 'primary' && {
-            border: 'none',
-            boxShadow: `0px 0px 0px 1px ${theme.palette.primary.main}`,
-            color: theme.palette.primary.main,
-            '&:hover': {
-              backgroundColor: `${theme.palette.secondary.main}50`,
-              boxShadow: 'none',
-              border: 'none',
-            },
-            '&:focus': {
-              backgroundColor: `${theme.palette.secondary.main}50`,
-              boxShadow: `0px 0px 0px 2px ${theme.palette.primary.main}`,
-            },
-            '&:active': {
-              backgroundColor: `${theme.palette.secondary.main}`,
-              color: theme.palette.primary.contrastText,
-              boxShadow: 'none',
-              border: 'none',
-            },
-          }),
-        //disabled
-        '&.Mui-disabled': {
-          backgroundColor: theme.palette.disabled.main,
-        },
-      })
-    }
-  }
+        color: theme.palette.text.disabled,
+      },
+    }),
+  },
+};
