@@ -30,13 +30,13 @@ export default function MyApp(props: MyAppProps) {
   }, [themeMode])
   return (
     <CacheProvider value={emotionCache}>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <Head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </Head>
       <ThemeProvider theme={theme}>
-        <Head>
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
-        </Head>
         <NoSsr>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
+          <CssBaseline enableColorScheme />
 
           <ThemeSwitcherFab />
           <Component {...pageProps} />
