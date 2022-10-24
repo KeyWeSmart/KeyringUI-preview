@@ -7,7 +7,9 @@ export const outlinedOverRide = ({
   ownerState: ButtonProps;
   theme: Theme;
 }) => {
-  const { color = 'inherit' } = ownerState;
+  let { color = 'inherit' } = ownerState;
+  if (ownerState.disabled)
+    color = 'inherit'
   return {
     color: color === 'inherit' ? 'inherit' : theme.palette[color].main,
     boxShadow: `0px 0px 0px 1px ${

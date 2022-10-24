@@ -6,6 +6,7 @@ const darkTheme: Partial<ThemeOptions> = {
     mode: 'dark',
     primary: {
       main: '#FF7110',
+      contrastText: 'white',
     },
     background: {
       default: '#252525',
@@ -15,14 +16,15 @@ const darkTheme: Partial<ThemeOptions> = {
     text: {
       primary: '#FFFFFF',
       secondary: '#D1D1D1',
-      disabled: 'rgb(255 255 255 / 50%)',
+      disabled: 'rgba(160, 160, 160, 0.5) !important',
     },
     action: {
-      disabled: 'rgb(255 255 255 / 50%)',
-      disabledBackground: 'rgb(255 255 255 / 12%)',
+      disabled: 'rgba(160, 160, 160, 0.5) !important',
+      disabledBackground: 'rgba(160, 160, 160, 0.5) !important',
     },
     disabled: {
       main: '#F5F5F5',
+      contrastText: '#252525',
     },
     inactive: {
       main: '#A0A0A0',
@@ -31,5 +33,5 @@ const darkTheme: Partial<ThemeOptions> = {
 };
 
 // Create a theme instance.
-export const DarkTheme = createTheme(darkTheme, BaseTheme);
+export const DarkTheme = createTheme(BaseTheme,darkTheme);
 export default DarkTheme;

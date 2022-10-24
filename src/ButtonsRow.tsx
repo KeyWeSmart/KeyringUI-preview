@@ -20,7 +20,7 @@ export const ButtonRow = () => {
     const [rowDisabled, setRowDisabled] = useAtom(BTNDisabledAtom);
     return (
         <RowContainer title="Buttons">
-            <FormControlLabel labelPlacement="bottom" control={<Switch onChange={(e) => setRowDisabled(e.target.checked)} />} label={`${rowDisabled ? 'Disabled' : 'Enabled'} State`} />
+            <FormControlLabel labelPlacement="bottom" checked={rowDisabled} control={<Switch onChange={(e) => setRowDisabled(e.target.checked)} />} label={`${rowDisabled ? 'Disabled' : 'Enabled'} State`} />
             <Stack
                 pr={6}
                 width={240}

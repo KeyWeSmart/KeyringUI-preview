@@ -20,7 +20,7 @@ export const TextFields = () => {
 
     return (
         <RowContainer title="TextFields">
-            <FormControlLabel labelPlacement="bottom" control={<Switch onChange={(e) => setRowDisabled(e.target.checked)} />} label={`${rowDisabled ? 'Disabled' : 'Enabled'} State`} />
+            <FormControlLabel labelPlacement="bottom" checked={rowDisabled} control={<Switch onChange={(e) => setRowDisabled(e.target.checked)} />} label={`${rowDisabled ? 'Disabled' : 'Enabled'} State`} />
             <Stack
                 pr={6}
                 width={240}

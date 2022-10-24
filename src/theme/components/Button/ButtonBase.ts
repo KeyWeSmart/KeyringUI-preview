@@ -29,12 +29,6 @@ export const BaseButton: Components<Omit<Theme, 'components'>>['MuiButton'] = {
         containedOverRide({ ownerState, theme })),
       ...(ownerState.variant === 'outlined' &&
         outlinedOverRide({ ownerState, theme })),
-      //disabled
-      '&.Mui-disabled': {
-        color: theme.palette.text.disabled,
-        backgroundColor: theme.palette.disabled.main,
-        boxShadow: 'none',
-      },
     }),
   },
 };

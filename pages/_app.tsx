@@ -10,6 +10,7 @@ import { themeAtom } from '../src/theme/themeAtom';
 import LightTheme from '../src/theme/LightTheme';
 import DarkTheme from '../src/theme/DarkTheme';
 import { ThemeSwitcherFab } from '../src/ThemSwitcherFab';
+import { NoSsr } from '@material-ui/core';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -29,14 +30,17 @@ export default function MyApp(props: MyAppProps) {
   }, [themeMode])
   return (
     <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
       <ThemeProvider theme={theme}>
+        <Head>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+        </Head>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <ThemeSwitcherFab />
-        <Component {...pageProps} />
+        <NoSsr>
+
+          <ThemeSwitcherFab />
+          <Component {...pageProps} />
+        </NoSsr>
       </ThemeProvider>
     </CacheProvider>
   );

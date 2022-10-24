@@ -26,17 +26,22 @@ const CheckboxColor: CheckboxProps['color'][] = [
 const CheckboxSizes: CheckboxProps['size'][] = ['small', 'medium'];
 
 const CheckboxRowDisabled = atomWithStorage('CheckboxRowDisabled', false);
+const CheckBoxRowColor = atomWithStorage<CheckboxProps['color']>(
+  'CheckBoxRowColor',
+  'primary'
+);
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export const CheckboxRow = () => {
-  const [rowColor, setRowColor] = useState<CheckboxProps['color']>('primary');
+  const [rowColor, setRowColor] = useAtom(CheckBoxRowColor);
   const [rowDisabled, setRowDisabled] = useAtom(CheckboxRowDisabled);
 
   return (
     <RowContainer title="Checkboxes">
       <FormControlLabel
         labelPlacement="bottom"
+        checked={rowDisabled}
         control={<Switch onChange={(e) => setRowDisabled(e.target.checked)} />}
         label={`${rowDisabled ? 'Disabled' : 'Enabled'} State`}
       />
