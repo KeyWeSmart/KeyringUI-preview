@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 import { ButtonRow } from '../src/ButtonsRow';
 import { CheckboxRow } from '../src/CheckboxRow';
 import { TextFields } from '../src/TextFieldRows';
+import CustomizedCheckbox from '../src/theme/components/CustomizedCheckbox';
 
 export default function Home() {
   return (
@@ -18,6 +19,8 @@ export default function Home() {
           <ButtonRow />
           <TextFields />
           <CheckboxRow />
+          {/* Is it right to do it this way too ? */}
+          <CustomizedCheckbox />
         </Stack>
       </Paper>
     </Container>
